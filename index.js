@@ -4,18 +4,14 @@ const app = express();
 
 app.use(express.json()); // middleware for json bodies
 
-const users = [
-  { id: 0, name: "John" },
-  { id: 1, name: "Bohn" },
-  { id: 2, name: "Boe" },
-];
+const users = [];
 
 const schemaUser = Joi.object({
   name: Joi.string().min(3).required(),
 });
 
 app.get("/favicon.ico", (req, res) => {
-  res.send(204);
+  res.status(204).send();
 });
 
 app.get("/", (req, res) => {
@@ -23,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/users", (req, res) => {
-  res.send([1, 2, 3]);
+  res.send(users.map((user) => user["id"]));
 });
 
 app.get("/api/users/:id", (req, res) => {
