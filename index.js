@@ -50,7 +50,7 @@ app.post("/api/users/", (req, res) => {
 });
 
 app.put("/api/users/:id", (req, res) => {
-  const { id, name } = req.params;
+  const { id } = req.params;
 
   const user = users.find((user) => user.id === parseInt(id));
   if (!user) return res.status(404).send(`User ${id} was not found`);
