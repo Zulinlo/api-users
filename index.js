@@ -62,7 +62,7 @@ app.put("/api/users/:id", (req, res) => {
     return;
   }
 
-  user.name = name;
+  user.name = req.body.name;
   res.send(user);
 });
 
